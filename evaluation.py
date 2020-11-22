@@ -91,6 +91,3 @@ class Evaluation:
             ownControl += len(list(board.attackers(color, num)))
             oppositeControl += len(list(board.attackers(not color, num)))
         return ownControl - oppositeControl
-  
-
-
