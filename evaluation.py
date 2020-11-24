@@ -10,71 +10,70 @@ class Evaluation:
         return score
 
     def kingProtection(board, color):
-        danger = False
+        danger = 0.5
         for y in range(0,8):
             for x in range(0,8):
                 king_state = board([x][y])
         def getColor([x][y]):
             return color[x][y]
         if getColor([x+1],[y]) or getColor[x-1][y] or getColor[x][y+1] or getColor[x][y-1] == self.color :
-            return danger = False
+            return danger = 0.8
         if getColor([x+1],[y]) or getColor[x-1][y] or getColor[x][y+1] or getColor[x][y-1] != self.color :
             if x < 6 :
-                return danger = False
+                return danger = -0.1
             elif x==8 or x==7
-                 return danger = True
+                 return danger = -0.7
             elif x > 3
-                return danger = True
+                return danger = 0.8
         
         moves = ([x + 1, y + 2], [x + 2, y + 1], [x + 2, y - 1], [x + 1, y - 2],[x - 1, y + 2], [x - 2, y + 1], [x - 1, y - 2], [x - 2, y - 1])
         for m in moves:
             if  x >= 0 and x <= 7 
                 if king_state == getColor(m)
-                    return danger = True
+                    return danger = -0.8
                 elif king_state !=getColor(m)
-                    return danger = False
+                    return danger = 0.9
             if y >= 0 and y <= 7:
                 if king_state == getColor(m)
-                    return danger = True
+                    return danger = -0.8
                 elif king_state !=getColor(m)
-                    return danger = False
+                    return danger = 0.9
 
 
     def pawnStructure(board, color):
-        danger = False
+        danger = 0.5
         pawn_state = baord([x,y])
         def getColor([x][y]):
             return color[x][y]
         if getColor([x+1],[y]) or getColor[x-1][y] or getColor[x][y+1] or getColor[x][y-1] != getColor([x][y]) :
-            return danger = False
+            return danger = 0.5
 
         moves = ([x + 1, y + 2], [x + 2, y + 1], [x + 2, y - 1], [x + 1, y - 2],[x - 1, y + 2], [x - 2, y + 1], [x - 1, y - 2], [x - 2, y - 1])
             if board[moves[0]][moves[1]] != None:
-                return danger = False
+                return danger = 0.5
             board[pawn_state[0]][pawn_state[1]] = None
-                return danger = True
-            if True:
+                return danger = -0.7
+            if < 0:
                 self.pawn_state = False
-                    return danger = False
+                    return danger = 0.6
 
             if pawn_state[0] < 0 or pawn_state[1] < 0:
-                return danger = False
+                return danger = 0.7
             opponent = board([x+1],[y]) or board[x-1][y] or board[x][y+1] or board[x][y-1]
             if opponent == None:
-                return danger = False
+                return danger = 0.6
             elif opponent.getColor() == self.color:
-                return danger = False
+                return danger = 0.8
             elif opponent.getColor() != self.color:
-                return danger = True
+                return danger = -0.9
             else:
-                return danger = True
+                return danger = -0.7
         moves = []
         if self.color == 'White':
             new_pawn_state = (pawn_state[0] - 2, pawn_state[1])
             if super(pawnStructure).in_bounds(board, new_pawn_state):
                 moves.append(new_pawn_state)
            
-
         else:
             new_pawn_state = (pawn_state[0] + 2, pawn_state[1])
             if super(pawnStructure).in_bounds(board, new_pawn_state):
@@ -84,7 +83,6 @@ class Evaluation:
                 moves.append(new_pawn_state)
 
         return moves
-
 
     def pieceDevelopment(self, board, color):
         king_developmentTable = [[-0.03, -0.04, -0.04, -0.05, -0.05, -0.04, -0.04, -0.03], 
