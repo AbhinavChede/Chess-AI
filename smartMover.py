@@ -11,7 +11,7 @@ class Player:
         pass
         
     def move(self, board, time): 
-        return self.minimax(board, 6, -1 * float('inf'), float('inf'), self.color)[0]
+        return self.minimax(board, 30, -1 * float('inf'), float('inf'), self.color)[0]
 #         return self.minimax(board, 2, -1 * float('inf'), float('inf'), self.color)[0]
 
     # Searches through the game tree to find an optimal move
@@ -65,7 +65,7 @@ class Player:
             numPieces = eval.pieceDifference(board, color)
             board.push(legalMove)
             newNumPieces = eval.pieceDifference(board, color)
-            if numPieces > newNumPieces + 0.01 or numPieces < newNumPieces - 0.01:
+            if numPieces > newNumPieces + 0.005 or numPieces < newNumPieces - 0.005:
                 score = -1 * self.quiescence(board, color, alpha, beta)
             board.pop()
             if score >= beta:
