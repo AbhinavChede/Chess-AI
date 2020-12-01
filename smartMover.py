@@ -11,7 +11,7 @@ class Player:
         pass
         
     def move(self, board, time): 
-        return self.minimax(board, 1, -1 * float('inf'), float('inf'), self.color)[0]
+        return self.minimax(board, 2, -1 * float('inf'), float('inf'), self.color)[0]
 
     # Searches through the game tree to find an optimal move
     def minimax(self, board, depth, alpha, beta, maximizing_player):

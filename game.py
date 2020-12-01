@@ -9,8 +9,8 @@ node = game
 board = chess.Board()
 board1 = board.copy()
 board2 = board.copy()
-p1_time = 60
-p2_time = 60
+p1_time = 300
+p2_time = 300
 
 start = time.time()
 p1 = player1.Player(board1,chess.WHITE,p1_time)
