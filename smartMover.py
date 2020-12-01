@@ -3,7 +3,7 @@ import chess
 import chess.syzygy
 from multiprocessing import Process, current_process, Pool
 import time
-from evaluation import Evaluation
+from .evaluation import Evaluation
 
 class Player:
     def __init__(self, board, color, time):
@@ -11,11 +11,8 @@ class Player:
         pass
         
     def move(self, board, time): 
-<<<<<<< HEAD
         return self.minimax(board, 6, -1 * float('inf'), float('inf'), self.color)[0]
-=======
-        return self.minimax(board, 2, -1 * float('inf'), float('inf'), self.color)[0]
->>>>>>> 08b55fbf51465aca023168c65c70fc91a47fa473
+#         return self.minimax(board, 2, -1 * float('inf'), float('inf'), self.color)[0]
 
     # Searches through the game tree to find an optimal move
     def minimax(self, board, depth, alpha, beta, maximizing_player):
